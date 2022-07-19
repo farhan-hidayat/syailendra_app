@@ -5,10 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="main-sidebar">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="<?php echo base_url(); ?>dashboard">Stisla</a>
+            <a href="<?php echo base_url(); ?>dashboard">Syailendra</a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
-            <a href="<?php echo base_url(); ?>dashboard">St</a>
+            <a href="<?php echo base_url(); ?>dashboard">Sy</a>
           </div>
           <ul class="sidebar-menu">
               <li class="menu-header">Dashboard</li>
@@ -16,15 +16,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a class="nav-link" href="<?php echo base_url(); ?>dashboard"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
               <li class="menu-header">Starter</li>
-              <li class="<?php echo $this->uri->segment(2) == 'menusatu' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/menusatu"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
-              <li class="<?php echo $this->uri->segment(2) == 'tabel' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/tabel"><i class="fas fa-th-large"></i> <span>Tabel</span></a></li>
-              <li class="menu-header">Pengaturan</li>
-              <li class="<?php echo $this->uri->segment(2) == 'akun' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/akun"><i class="far fa-user"></i> <span>Akun</span></a></li>
-              <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
+              <li class="<?php echo $this->uri->segment(2) == 'lokasi' || $this->uri->segment(2) == 'karyawan' ? 'active' : ''; ?> nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-archive"></i> <span>Master Data</span></a>
                 <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="#">Alert</a></li>
-                  <li><a class="nav-link" href="#">Badge</a></li>
+                  <li class="<?php echo $this->uri->segment(2) == 'lokasi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/lokasi">Data Lokasi</a></li>
+                  <li class="<?php echo $this->uri->segment(2) == 'karyawan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/karyawan">Data Karyawan</a></li>
+                </ul>
+              </li>
+              <li class="<?php echo $this->uri->segment(2) == 'presensi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/presensi"><i class="fas fa-barcode"></i> <span>Presensi</span></a></li>
+              <li class="<?php echo $this->uri->segment(2) == 'histori' || $this->uri->segment(2) == 'rekap' ? 'active' : ''; ?> nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-calendar"></i> <span>Data Presensi</span></a>
+                <ul class="dropdown-menu">
+                  <li class="<?php echo $this->uri->segment(2) == 'histori' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/histori">Histori</a></li>
+                  <li class="<?php echo $this->uri->segment(2) == 'rekap' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/rekap">Rekap</a></li>
+                </ul>
+              </li>
+              <li class="<?php echo $this->uri->segment(2) == 'kasbon' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/kasbon"><i class="fas fa-book"></i> <span>Kasbon</span></a></li>
+              <li class="<?php echo $this->uri->segment(2) == 'gaji' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/gaji"><i class="fas fa-wallet"></i> <span>Gaji</span></a></li>
+              <li class="menu-header">Pengaturan</li>
+              <li class="<?php echo $this->uri->segment(2) == 'pengguna' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/pengguna"><i class="fas fa-users"></i> <span>Pengguna</span></a></li>
+              <li class="<?php echo $this->uri->segment(2) == 'hitungan' || $this->uri->segment(2) == 'rekap' ? 'active' : ''; ?> nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-clock"></i> <span>Formula</span></a>
+                <ul class="dropdown-menu">
+                  <li class="<?php echo $this->uri->segment(2) == 'hitungan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/histori">Terlambat & Lembur</a></li>
+                  <li class="<?php echo $this->uri->segment(2) == 'rekap' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/rekap">Lorem</a></li>
                 </ul>
               </li>
             </ul>

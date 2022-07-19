@@ -21,7 +21,7 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		$data = array(
-			'title' => "Situs Apa Nich"
+			'title' => "Syailendra"
 		);
 		$this->load->view('pengunjung/home', $data);
 	}

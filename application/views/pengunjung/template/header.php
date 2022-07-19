@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title><?php echo $title; ?></title>
-  <link rel="icon" href="assets/stisla/assets/img/stisla.svg" type="image/x-icon" />
+  <link rel="icon" href="<?php echo base_url().'logo1.png'; ?>" type="image/x-icon" />
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
