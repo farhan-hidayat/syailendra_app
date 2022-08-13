@@ -41,6 +41,15 @@ class Dashboard extends CI_Controller {
 		$this->load->view('admin/karyawan/v_karyawan', $data);
 	}
 
+	public function tambah_karyawan()
+	{
+		$data = array(
+			'title' => "Tambah Karyawan",
+			'karyawan' => $this->m_data->get_data('lokasi')->result()
+		);
+		$this->load->view('admin/karyawan/v_karyawan_tambah', $data);
+	}
+
 	public function histori()
 	{
 		$data = array(
