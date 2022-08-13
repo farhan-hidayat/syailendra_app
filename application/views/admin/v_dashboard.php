@@ -34,8 +34,12 @@ $this->load->view('admin/template/sidebar');
             </div>
             <div class="card-body">
               <h4>Karyawan : <?php echo $jumlah_karyawan ?></h4>
-              <?php foreach ($karyawan as $k) { ?>
-                <p><?php echo $k->karyawan_kode; ?> : <?php echo $k->karyawan_nama; ?></p>
+              <?php foreach ($lokasi as $k) { ?>
+                <?php 
+                  $total = $this->db->query("SELECT lokasi.*, COUNT(id_karyawan) as jml FROM karyawan,lokasi WHERE lokasi_karyawan=id_lokasi AND id_lokasi=$k->id_lokasi");
+                  $total_sekarang = $total->row()->jml;
+                ?>
+                <p><?php echo $k->kode_lokasi; ?> : <?php echo $total_sekarang; ?></p>
               <?php } ?>
             </div>
           </div>
