@@ -16,7 +16,7 @@ $this->load->view('admin/template/sidebar');
             <div class="card-header">
                 <h4>Daftar Lokasi Toko</h4>
                 <div class="card-header-action">
-                    <a href="#" class="btn btn-primary">
+                    <a href="#" id="modal-5i" class="btn btn-primary">
                     <i class="fas fa-plus"></i> Add New
                     </a>
                 </div>
@@ -46,8 +46,8 @@ $this->load->view('admin/template/sidebar');
                         <td><?php echo $a->nama_lokasi; ?></td>
                         <td><?php echo $a->alamat_lokasi; ?></td>
                         <td class="text-center">
-                            <a href="#" class="btn btn-success"><i class="fas fa-edit"></i> Edit</a>
-                            <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i> Hapus</a>
+                            <a href="<?php echo base_url() . 'dashboard/ubah_lokasi/'.$a->id_lokasi; ?>" class="btn btn-success"><i class="fas fa-edit"></i> Edit</a>
+                            <a href="<?php echo base_url() . 'dashboard/hapus_lokasi/'.$a->id_lokasi; ?>" class="btn btn-danger" id="swal-6i"><i class="fas fa-trash"></i> Hapus</a>
                         </td>
                         </tr>
                         <?php } ?>
@@ -58,6 +58,43 @@ $this->load->view('admin/template/sidebar');
         </div>
 
     </section>
+
+    <form class="modal-part" id="modal-part" method="post" action="<?php echo base_url() . 'dashboard/tambah_lokasi'; ?>">
+        <div class="form-group">
+            <label>Nama</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-store"></i>
+                </div>
+                </div>
+                <input type="text" class="form-control" placeholder="Nama Toko" name="nama">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Kode</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-lock"></i>
+                </div>
+                </div>
+                <input type="text" class="form-control" placeholder="Kode Toko" name="kode">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Alamat</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                </div>
+                <input type="text" class="form-control" placeholder="Alamat Toko" name="alamat">
+            </div>
+        </div>
+    </form>
+    
 </div>
 
 <?php $this->load->view('admin/template/footer'); ?>

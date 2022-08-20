@@ -31,23 +31,37 @@ $this->load->view('admin/template/sidebar');
                     <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Nama</label>
                       <div class="col-sm-12 col-md-7">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" placeholder="Masukan Nama Karyawan">
                       </div>
                     </div>
                     <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Lokasi Kerja</label>
                       <div class="col-sm-12 col-md-7">
-                        <select class="form-control selectric">
-                          <option>Tech</option>
-                          <option>News</option>
-                          <option>Political</option>
-                        </select>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">
+                                <i class="fas fa-map-marker-alt"></i>
+                              </div>
+                            </div>
+                          <select class="form-control selectric">
+                            <option>Tech</option>
+                            <option>News</option>
+                            <option>Political</option>
+                          </select>
+                        </div>
                       </div>
                     </div>
                     <div class="form-group row mb-4">
-                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tags</label>
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">No. Hp</label>
                       <div class="col-sm-12 col-md-7">
-                        <input type="text" class="form-control inputtags">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                              <i class="fas fa-phone"></i>
+                            </div>
+                          </div>
+                          <input type="number" class="form-control" placeholder="08xxxx">
+                        </div>
                       </div>
                     </div>
                     <div class="form-group row mb-4">
@@ -63,7 +77,7 @@ $this->load->view('admin/template/sidebar');
                     <div class="form-group row mb-4">
                       <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                       <div class="col-sm-12 col-md-7">
-                        <button class="btn btn-primary">Create Post</button>
+                        <button class="btn btn-primary">Tambah</button>
                       </div>
                     </div>
                   </div>

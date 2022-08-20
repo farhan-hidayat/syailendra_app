@@ -31,6 +31,73 @@ class Dashboard extends CI_Controller {
 		);
 		$this->load->view('admin/lokasi/v_lokasi', $data);
 	}
+
+	public function tambah_lokasi()
+	{
+		$data = array(
+			'title' => "Tambah Lokasi"
+		);
+		$this->load->view('admin/lokasi/v_lokasi_tambah', $data);
+	}
+
+	public function ubah_lokasi($id)
+	{
+		$where = array(
+			'id_lokasi' => $id
+		);
+		$data = array(
+			'title' => "Tambah Lokasi",
+			'lokasi' => $this->m_data->edit_data($where, 'lokasi')->result()
+		);
+		$this->load->view('admin/lokasi/v_lokasi_ubah', $data);
+	}
+
+	public function update_lokasi()
+	{
+		$this->form_validation->set_rules('nama', 'Nama', 'required');
+		$this->form_validation->set_rules('kode', 'Kode', 'required|is_unique[lokasi.kode_lokasi]');
+
+		if ($this->form_validation->run() != false) {
+
+			$id = $this->input->post('id');
+			$nama = $this->input->post('nama');
+			$kode = $this->input->post('kode');
+			$alamat = $this->input->post('alamat');
+
+			$where = array(
+				'id_lokasi' => $id
+			);
+
+			$data = array(
+				'nama_lokasi' => $nama,
+				'kode_lokasi' => $kode,
+				'alamat_lokasi' => $alamat
+			);
+
+			$this->m_data->update_data($where, $data, 'lokasi');
+
+			redirect(base_url() . 'dashboard/lokasi');
+		} else {
+
+			$id = $this->input->post('id');
+			$where = array(
+				'id_lokasi' => $id
+			);
+			$data['lokasi'] = $this->m_data->edit_data($where, 'lokasi')->result();
+			$this->load->view('admin/lokasi/v_lokasi_ubah', $data);
+		}
+	}
+	
+	public function hapus_lokasi($id)
+	{
+		$where = array(
+			'id_lokasi' => $id
+		);
+
+		$this->m_data->delete_data($where, 'lokasi');
+
+		redirect(base_url() . 'dashboard/lokasi/v_lokasi');
+	}
 	
 	public function karyawan()
 	{

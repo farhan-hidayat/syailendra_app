@@ -35,16 +35,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="<?php echo base_url(); ?>assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/modules/jquery-ui/jquery-ui.min.js"></script>
-
-  <!-- Template JS File -->
-  <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
-  <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
+  <script src="<?php echo base_url(); ?>assets/modules/sweetalert/sweetalert.min.js"></script>
+  <script src="<?php echo base_url(); ?>assets/modules/prism/prism.js"></script>
+  <script src="<?php echo base_url(); ?>assets/modules/izitoast/js/iziToast.min.js"></script>
 
   <!-- Page Specific JS File -->
   <script src="<?php echo base_url(); ?>assets/js/page/index.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/page/index-0.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/page/components-table.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/page/modules-datatables.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/page/modules-sweetalert.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/page/bootstrap-modal.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/page/modules-toastr.js"></script>
+  
+  <!-- Template JS File -->
+  <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
+  <script src="<?php echo base_url(); ?>assets/js/custom.js"></script>
   
 </body>
 </html>
