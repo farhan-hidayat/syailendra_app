@@ -34,10 +34,38 @@ class Dashboard extends CI_Controller {
 
 	public function tambah_lokasi()
 	{
-		$data = array(
-			'title' => "Tambah Lokasi"
-		);
-		$this->load->view('admin/lokasi/v_lokasi_tambah', $data);
+		$this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[lokasi.nama_lokasi]');
+		$this->form_validation->set_rules('kode', 'Kode', 'required|is_unique[lokasi.nama_lokasi]');
+
+		if ($this->form_validation->run() != false) {
+
+			$nama = $this->input->post('nama');
+			$kode = $this->input->post('kode');
+			$alamat = $this->input->post('alamat');
+
+			$data = array(
+				'nama_lokasi' => $nama,
+				'kode_lokasi' => $kode,
+				'alamat_lokasi' => $alamat
+			);
+
+			$this->m_data->insert_data($data, 'lokasi');
+
+			$this->session->set_flashdata('msg','Ditambah');
+
+			redirect(base_url() . 'dashboard/lokasi');
+		} else {
+			$this->session->set_flashdata('msg',
+				'
+									<div class="alert alert-danger alert-dismissible" role="alert">
+										 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											 <span aria-hidden="true">&times;&nbsp; &nbsp;</span>
+										 </button>
+										 <strong>Sukses!</strong> Gagal Tambah Data.
+									</div>'
+			);
+			redirect(base_url() . 'dashboard/lokasi');
+		}
 	}
 
 	public function ubah_lokasi($id)
@@ -54,7 +82,7 @@ class Dashboard extends CI_Controller {
 
 	public function update_lokasi()
 	{
-		$this->form_validation->set_rules('nama', 'Nama', 'required');
+		$this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[lokasi.nama_lokasi]');
 		$this->form_validation->set_rules('kode', 'Kode', 'required|is_unique[lokasi.kode_lokasi]');
 
 		if ($this->form_validation->run() != false) {
@@ -75,6 +103,8 @@ class Dashboard extends CI_Controller {
 			);
 
 			$this->m_data->update_data($where, $data, 'lokasi');
+			
+			$this->session->set_flashdata('msg','Diubah');
 
 			redirect(base_url() . 'dashboard/lokasi');
 		} else {
@@ -96,9 +126,107 @@ class Dashboard extends CI_Controller {
 
 		$this->m_data->delete_data($where, 'lokasi');
 
+		$this->session->set_flashdata('msg','Dihapus');
+
 		redirect(base_url() . 'dashboard/lokasi/v_lokasi');
 	}
+
+	public function divisi()
+	{
+		$data = array(
+			'title' => "Data Divisi",
+			'divisi' => $this->m_data->get_data('divisi')->result()
+		);
+		$this->load->view('admin/divisi/v_divisi', $data);
+	}
 	
+	public function tambah_divisi()
+	{
+		$this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[divisi.nama_divisi]');
+
+		if ($this->form_validation->run() != false) {
+
+			$nama = $this->input->post('nama');
+
+			$data = array(
+				'nama_divisi' => $nama,
+			);
+
+			$this->m_data->insert_data($data, 'divisi');
+
+			$this->session->set_flashdata('msg','Ditambah');
+
+			redirect(base_url() . 'dashboard/divisi');
+		} else {
+			$this->session->set_flashdata('msg',
+				'
+									<div class="alert alert-danger alert-dismissible" role="alert">
+										 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											 <span aria-hidden="true">&times;&nbsp; &nbsp;</span>
+										 </button>
+										 <strong>Sukses!</strong> Gagal Tambah Data.
+									</div>'
+			);
+			redirect(base_url() . 'dashboard/divisi');
+		}
+	}
+
+	public function ubah_divisi($id)
+	{
+		$where = array(
+			'id_divisi' => $id
+		);
+		$data = array(
+			'title' => "Ubah Divisi",
+			'divisi' => $this->m_data->edit_data($where, 'divisi')->result()
+		);
+		$this->load->view('admin/divisi/v_divisi_ubah', $data);
+	}
+
+	public function update_divisi()
+	{
+		$this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[divisi.nama_divisi]');
+
+		if ($this->form_validation->run() != false) {
+
+			$id = $this->input->post('id');
+			$nama = $this->input->post('nama');
+
+			$where = array(
+				'id_divisi' => $id
+			);
+
+			$data = array(
+				'nama_divisi' => $nama,
+			);
+
+			$this->m_data->update_data($where, $data, 'divisi');
+
+			$this->session->set_flashdata('msg','Diubah');
+
+			redirect(base_url() . 'dashboard/divisi');
+		} else {
+
+			$id = $this->input->post('id');
+			$where = array(
+				'id_divisi' => $id
+			);
+			$data['divisi'] = $this->m_data->edit_data($where, 'divisi')->result();
+			$this->load->view('admin/divisi/v_divisi_ubah', $data);
+		}
+	}
+	
+	public function hapus_divisi($id)
+	{
+		$where = array(
+			'id_divisi' => $id
+		);
+
+		$this->m_data->delete_data($where, 'divisi');
+
+		redirect(base_url() . 'dashboard/divisi/v_divisi');
+	}
+
 	public function karyawan()
 	{
 		$data = array(

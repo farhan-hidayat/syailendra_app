@@ -16,7 +16,7 @@ $this->load->view('admin/template/sidebar');
             <div class="card-header">
                 <h4>Daftar Karyawan</h4>
                 <div class="card-header-action">
-                    <a href="<?php echo base_url() . 'dashboard/tambah_karyawan'; ?>" class="btn btn-primary">
+                    <a href="#" class="btn btn-primary" id="swal-6">
                     <i class="fas fa-plus"></i> Add New
                     </a>
                 </div>

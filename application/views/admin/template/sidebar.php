@@ -16,10 +16,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a class="nav-link" href="<?php echo base_url(); ?>dashboard"><i class="fas fa-fire"></i><span>Dashboard</span></a>
               </li>
               <li class="menu-header">Starter</li>
-              <li class="<?php echo $this->uri->segment(2) == 'lokasi' || $this->uri->segment(2) == 'karyawan' ? 'active' : ''; ?> nav-item dropdown">
+              <li class="<?php echo $this->uri->segment(2) == 'lokasi' || $this->uri->segment(2) == 'divisi' || $this->uri->segment(2) == 'karyawan' ? 'active' : ''; ?> nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-archive"></i> <span>Master Data</span></a>
                 <ul class="dropdown-menu">
                   <li class="<?php echo $this->uri->segment(2) == 'lokasi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/lokasi">Data Lokasi</a></li>
+                  <li class="<?php echo $this->uri->segment(2) == 'divisi' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/divisi">Data Divisi</a></li>
                   <li class="<?php echo $this->uri->segment(2) == 'karyawan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url(); ?>dashboard/karyawan">Data Karyawan</a></li>
                 </ul>
               </li>
