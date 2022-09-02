@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 
 <body class="layout-3">
@@ -10,5 +10,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <a href="<?php echo base_url(); ?>" class="navbar-brand">Syailendra</a>
         <form class="form-inline ml-auto">
         </form>
-        <!-- <a href="<?php echo base_url() ?>login" class="btn btn-success">Login</a> -->
+        <a href="<?php echo base_url() ?>login" class="btn btn-success">Login</a>
       </nav>

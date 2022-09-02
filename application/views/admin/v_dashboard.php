@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 $this->load->view('admin/template/header');
 $this->load->view('admin/template/navbar');
 $this->load->view('admin/template/sidebar');
@@ -13,11 +13,12 @@ $this->load->view('admin/template/sidebar');
     </div>
 
     <div class="section-body">
+      <!-- <div id="MyClockDisplay" class="clock card-icon bg-primary text-white" onload="startTime()" class="text-center"></div> -->
       <div class="row">
         <div class="col-lg-6">
           <div class="card card-large-icons">
             <div class="card-icon bg-primary text-white">
-            <i class="fas fa-map-marker-alt"></i>
+              <i class="fas fa-map-marker-alt"></i>
             </div>
             <div class="card-body">
               <h4>Lokasi : <?php echo $jumlah_lokasi ?></h4>
@@ -35,9 +36,9 @@ $this->load->view('admin/template/sidebar');
             <div class="card-body">
               <h4>Karyawan : <?php echo $jumlah_karyawan ?></h4>
               <?php foreach ($lokasi as $k) { ?>
-                <?php 
-                  $total = $this->db->query("SELECT lokasi.*, COUNT(id_karyawan) as jml FROM karyawan,lokasi WHERE lokasi_karyawan=id_lokasi AND id_lokasi=$k->id_lokasi");
-                  $total_sekarang = $total->row()->jml;
+                <?php
+                $total = $this->db->query("SELECT lokasi.*, COUNT(id_karyawan) as jml FROM karyawan,lokasi WHERE lokasi_karyawan=id_lokasi AND id_lokasi=$k->id_lokasi");
+                $total_sekarang = $total->row()->jml;
                 ?>
                 <p><?php echo $k->kode_lokasi; ?> : <?php echo $total_sekarang; ?></p>
               <?php } ?>
@@ -48,5 +49,5 @@ $this->load->view('admin/template/sidebar');
     </div>
   </section>
 </div>
-      
+
 <?php $this->load->view('admin/template/footer'); ?>

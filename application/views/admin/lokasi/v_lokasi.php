@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 $this->load->view('admin/template/header');
 $this->load->view('admin/template/navbar');
 $this->load->view('admin/template/sidebar');
@@ -9,6 +9,8 @@ $this->load->view('admin/template/sidebar');
 <div class="main-content">
 
     <div class="flash-data" data-flashdata="<?= $this->session->flashdata('msg'); ?>"></div>
+    <?php echo form_error('nama'); ?>
+    <?php echo form_error('kode'); ?>
 
     <section class="section">
         <div class="section-header">
@@ -27,9 +29,9 @@ $this->load->view('admin/template/sidebar');
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-striped" id="table-1">
-                        <thead>                                 
+                        <thead>
                             <tr>
-                                <th class="text-center">
+                                <th class="text-center" width="1%">
                                     No.
                                 </th>
                                 <th>Kode</th>
@@ -39,20 +41,20 @@ $this->load->view('admin/template/sidebar');
                             </tr>
                         </thead>
                         <tbody>
-                        <?php
-                                        $no = 1;
-                                        foreach ($lokasi as $a) {
-                                        ?>                                 
-                            <tr>
-                                <td class="text-center"><?php echo $no++; ?></td>
-                                <td><?php echo $a->kode_lokasi; ?></td>
-                                <td><?php echo $a->nama_lokasi; ?></td>
-                                <td><?php echo $a->alamat_lokasi; ?></td>
-                                <td class="text-center">
-                                    <a href="<?php echo base_url() . 'dashboard/ubah_lokasi/'.$a->id_lokasi; ?>" class="btn btn-success"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="<?php echo base_url() . 'dashboard/hapus_lokasi/'.$a->id_lokasi; ?>" class="btn btn-danger btn-hapus"><i class="fas fa-trash"></i> Hapus</a>
-                                </td>
-                            </tr>
+                            <?php
+                            $no = 1;
+                            foreach ($lokasi as $a) {
+                            ?>
+                                <tr>
+                                    <td class="text-center"><?php echo $no++; ?></td>
+                                    <td><?php echo $a->kode_lokasi; ?></td>
+                                    <td><?php echo $a->nama_lokasi; ?></td>
+                                    <td><?php echo $a->alamat_lokasi; ?></td>
+                                    <td class="text-center">
+                                        <a href="<?php echo base_url() . 'dashboard/ubah_lokasi/' . $a->id_lokasi; ?>" class="btn btn-success"><i class="fas fa-edit"></i> Edit</a>
+                                        <a href="<?php echo base_url() . 'dashboard/hapus_lokasi/' . $a->id_lokasi; ?>" class="btn btn-danger btn-hapus"><i class="fas fa-trash"></i> Hapus</a>
+                                    </td>
+                                </tr>
                             <?php } ?>
                         </tbody>
                     </table>
@@ -62,78 +64,57 @@ $this->load->view('admin/template/sidebar');
 
     </section>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="tes">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <p>Modal body text goes here.</p>
-              </div>
-              <div class="modal-footer bg-whitesmoke br">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <!-- Modal -->
+    <!-- Modal Tambah-->
     <div class="modal fade" id="ModalTambah" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Tambah Lokasi</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="post" action="<?php echo base_url() . 'dashboard/tambah_lokasi'; ?>">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Nama</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fas fa-store"></i>
-                            </div>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Nama Toko" name="nama">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Kode</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Kode Toko" name="kode">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Alamat</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Alamat Toko" name="alamat">
-                        </div>
-                    </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Lokasi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Tambah</button>
-                </div>
-            </form>
+                <form method="post" action="<?php echo base_url() . 'dashboard/tambah_lokasi'; ?>">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-store"></i>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Nama Toko" name="nama">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Kode</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Kode Toko" name="kode">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Alamat</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Alamat Toko" name="alamat">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -145,7 +126,7 @@ $this->load->view('admin/template/sidebar');
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ubah Divisi</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <form method="post" action="<?php echo base_url() . 'dashboard/update_lokasi'; ?>">
@@ -155,33 +136,33 @@ $this->load->view('admin/template/sidebar');
                             <label>Nama</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-store"></i>
+                                    <div class="input-group-text">
+                                        <i class="fas fa-store"></i>
+                                    </div>
                                 </div>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Nama Lokasi" name="nama" id="nama">
+                                <input type="text" class="form-control" placeholder="Nama Lokasi" name="nama" id="nama" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Kode</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-lock"></i>
+                                    <div class="input-group-text">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
                                 </div>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Kode Toko" name="kode" id="kode">
+                                <input type="text" class="form-control" placeholder="Kode Toko" name="kode" id="kode" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Alamat</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div class="input-group-text">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
                                 </div>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Alamat Toko" name="alamat" id="alamat">
+                                <input type="text" class="form-control" placeholder="Alamat Toko" name="alamat" id="alamat" required>
                             </div>
                         </div>
                     </div>
@@ -193,7 +174,7 @@ $this->load->view('admin/template/sidebar');
             </div>
         </div>
     </div>
-    
+
 </div>
 
 <?php $this->load->view('admin/template/footer'); ?>

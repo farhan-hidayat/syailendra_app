@@ -1,4 +1,9 @@
 {
 	"editor.experimental.stickyScroll.enabled": true,
-	"editor.defaultFormatter": "esbenp.prettier-vscode"
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"[php]": {
+		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+	},
+	"editor.formatOnSave": true,
+	"editor.formatOnType": false
 }

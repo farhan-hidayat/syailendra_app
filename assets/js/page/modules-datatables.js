@@ -34,6 +34,9 @@ $("[data-checkboxes]").each(function () {
 	});
 });
 
+$("#table-0").dataTable({
+	columnDefs: [{ sortable: false }],
+});
 $("#table-1").dataTable({
 	columnDefs: [{ sortable: false, targets: [4] }],
 });
@@ -44,5 +47,5 @@ $("#table-3").dataTable({
 	columnDefs: [{ sortable: false, targets: [2] }],
 });
 $("#table-4").dataTable({
-	columnDefs: [{ sortable: false }],
+	columnDefs: [{ sortable: false, targets: [7] }],
 });

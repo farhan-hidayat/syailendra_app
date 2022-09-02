@@ -1,19 +1,20 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Dashboard extends CI_Controller
+{
 
 	function __construct()
 	{
 		parent::__construct();
 
-		date_default_timezone_set('Asia/Jakarta');
 		$this->load->model('m_data');
+		check_not_login();
 	}
 
 	public function index()
 	{
-        $data = array(
+		$data = array(
 			'title' => "Dashboard",
 			'jumlah_lokasi' => $this->m_data->get_data('lokasi')->num_rows(),
 			'lokasi' => $this->m_data->get_data('lokasi')->result(),
@@ -21,6 +22,12 @@ class Dashboard extends CI_Controller {
 			'karyawan' => $this->m_data->get_data('karyawan')->result()
 		);
 		$this->load->view('admin/v_dashboard', $data);
+	}
+
+	public function keluar()
+	{
+		$this->session->sess_destroy();
+		redirect('login?alert=logout');
 	}
 
 	public function lokasi()
@@ -51,11 +58,12 @@ class Dashboard extends CI_Controller {
 
 			$this->m_data->insert_data($data, 'lokasi');
 
-			$this->session->set_flashdata('msg','Ditambah');
+			$this->session->set_flashdata('msg', 'Ditambah');
 
 			redirect(base_url() . 'dashboard/lokasi');
 		} else {
-			$this->session->set_flashdata('msg',
+			$this->session->set_flashdata(
+				'err',
 				'
 									<div class="alert alert-danger alert-dismissible" role="alert">
 										 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -103,8 +111,8 @@ class Dashboard extends CI_Controller {
 			);
 
 			$this->m_data->update_data($where, $data, 'lokasi');
-			
-			$this->session->set_flashdata('msg','Diubah');
+
+			$this->session->set_flashdata('msg', 'Diubah');
 
 			redirect(base_url() . 'dashboard/lokasi');
 		} else {
@@ -117,7 +125,7 @@ class Dashboard extends CI_Controller {
 			$this->load->view('admin/lokasi/v_lokasi_ubah', $data);
 		}
 	}
-	
+
 	public function hapus_lokasi($id)
 	{
 		$where = array(
@@ -126,7 +134,7 @@ class Dashboard extends CI_Controller {
 
 		$this->m_data->delete_data($where, 'lokasi');
 
-		$this->session->set_flashdata('msg','Dihapus');
+		$this->session->set_flashdata('msg', 'Dihapus');
 
 		redirect(base_url() . 'dashboard/lokasi/v_lokasi');
 	}
@@ -139,7 +147,7 @@ class Dashboard extends CI_Controller {
 		);
 		$this->load->view('admin/divisi/v_divisi', $data);
 	}
-	
+
 	public function tambah_divisi()
 	{
 		$this->form_validation->set_rules('nama', 'Nama', 'required|is_unique[divisi.nama_divisi]');
@@ -154,19 +162,18 @@ class Dashboard extends CI_Controller {
 
 			$this->m_data->insert_data($data, 'divisi');
 
-			$this->session->set_flashdata('msg','Ditambah');
+			$this->session->set_flashdata('msg', 'Ditambah');
 
 			redirect(base_url() . 'dashboard/divisi');
 		} else {
-			$this->session->set_flashdata('msg',
-				'
-									<div class="alert alert-danger alert-dismissible" role="alert">
-										 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-											 <span aria-hidden="true">&times;&nbsp; &nbsp;</span>
-										 </button>
-										 <strong>Sukses!</strong> Gagal Tambah Data.
-									</div>'
-			);
+			$msg = '<div class="alert alert-danger alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;&nbsp; &nbsp;</span>
+							</button>
+							<strong> ' . form_error('nama') . '</strong>
+					</div>';
+
+			$this->session->set_flashdata('err', $msg);
 			redirect(base_url() . 'dashboard/divisi');
 		}
 	}
@@ -202,20 +209,23 @@ class Dashboard extends CI_Controller {
 
 			$this->m_data->update_data($where, $data, 'divisi');
 
-			$this->session->set_flashdata('msg','Diubah');
+			$this->session->set_flashdata('msg', 'Diubah');
 
 			redirect(base_url() . 'dashboard/divisi');
 		} else {
 
-			$id = $this->input->post('id');
-			$where = array(
-				'id_divisi' => $id
-			);
-			$data['divisi'] = $this->m_data->edit_data($where, 'divisi')->result();
-			$this->load->view('admin/divisi/v_divisi_ubah', $data);
+			$msg = '<div class="alert alert-danger alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;&nbsp; &nbsp;</span>
+							</button>
+							<strong> ' . form_error('nama') . '</strong>
+					</div>';
+
+			$this->session->set_flashdata('err', $msg);
+			redirect(base_url() . 'dashboard/divisi');
 		}
 	}
-	
+
 	public function hapus_divisi($id)
 	{
 		$where = array(
@@ -240,7 +250,8 @@ class Dashboard extends CI_Controller {
 	{
 		$data = array(
 			'title' => "Tambah Karyawan",
-			'karyawan' => $this->m_data->get_data('lokasi')->result()
+			'lokasi' => $this->m_data->get_data('lokasi')->result(),
+			'divisi' => $this->m_data->get_data('divisi')->result()
 		);
 		$this->load->view('admin/karyawan/v_karyawan_tambah', $data);
 	}
@@ -269,7 +280,7 @@ class Dashboard extends CI_Controller {
 		$this->load->view('admin/tabel', $data);
 	}
 
-    public function gaji()
+	public function gaji()
 	{
 		$data = array(
 			'title' => "Gaji"
@@ -277,7 +288,7 @@ class Dashboard extends CI_Controller {
 		$this->load->view('admin/tabel', $data);
 	}
 
-    public function pengguna()
+	public function pengguna()
 	{
 		$data = array(
 			'title' => "Pengguna"
