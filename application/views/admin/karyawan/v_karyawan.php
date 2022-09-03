@@ -10,15 +10,25 @@ $this->load->view('admin/template/sidebar');
     <section class="section">
         <div class="section-header">
             <h1>Karyawan</h1>
+            <div class="section-header-button">
+                <a href="<?php echo base_url() . 'dashboard/tambah_karyawan' ?>" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add New
+                </a>
+            </div>
         </div>
 
         <div class="card card-primary">
             <div class="card-header">
                 <h4>Daftar Karyawan</h4>
                 <div class="card-header-action">
-                    <a href="<?php echo base_url() . 'dashboard/tambah_karyawan' ?>" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Add New
-                    </a>
+                    <select class="form-control selectric" name="lokasi" required>
+                        <option value="">- Pilih Lokasi -</option>
+                        <?php foreach ($lokasi as $l) { ?>
+                            <option <?php if (set_value('lokasi') == $l->id_lokasi) {
+                                        echo "selected='selected'";
+                                    } ?> value="<?php echo $l->id_lokasi ?>"><?php echo $l->nama_lokasi; ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
             </div>
             <div class="card-body">

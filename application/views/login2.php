@@ -119,7 +119,7 @@
         ?>
 
         <div class="inputGroup inputGroup1">
-            <label for="email1">Email</label>
+            <label for="email1">Username</label>
             <input type="text" name="username" id="email" class="email" maxlength="256" />
             <span class="indicator"></span>
         </div>
@@ -129,6 +129,9 @@
         </div>
         <div class="inputGroup inputGroup3">
             <button id="login">Log in</button>
+        </div>
+        <div class="simple-footer">
+            Copyright &copy; <?= date('Y'); ?> <div class="bullet"></div> Design By <a href="https://codepen.io/dsenneff" blank="">Darin</a>
         </div>
     </form>
     <!-- partial -->

@@ -14,16 +14,16 @@ $this->load->view('admin/template/sidebar');
     <section class="section">
         <div class="section-header">
             <h1>Divisi</h1>
+            <div class="section-header-button">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalTambah">
+                    <i class="fas fa-plus"></i> Tambah
+                </button>
+            </div>
         </div>
 
         <div class="card card-primary">
             <div class="card-header">
                 <h4>Daftar Divisi</h4>
-                <div class="card-header-action">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalTambah">
-                        <i class="fas fa-plus"></i> Tambah
-                    </button>
-                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
