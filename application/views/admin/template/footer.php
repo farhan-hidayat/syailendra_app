@@ -23,6 +23,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script src="<?php echo base_url(); ?>assets/js/stisla.js"></script>
 
 <!-- JS Libraies -->
+<script src="<?php echo base_url(); ?>assets/modules/cleave-js/dist/cleave.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/modules/jquery.sparkline.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/modules/chart.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
@@ -40,6 +41,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script src="<?php echo base_url(); ?>assets/modules/izitoast/js/iziToast.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/modules/jquery-pwstrength/jquery.pwstrength.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/modules/bootstrap-daterangepicker/daterangepicker.js"></script>
 
 <!-- Page Specific JS File -->
 <script src="<?php echo base_url(); ?>assets/js/page/index.js"></script>
@@ -50,6 +53,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script src="<?php echo base_url(); ?>assets/js/page/bootstrap-modal.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/page/modules-toastr.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/page/features-post-create.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/page/modules-ion-icons.js"></script>
 
 <!-- Template JS File -->
 <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>

@@ -75,10 +75,13 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'db4free.net',
-	'username' => 'db_sy_adm',
-	'password' => 'SyailendraAdmin1!',
-	'database' => 'sy_app',
+	'hostname' => 'localhost',
+	'username' => 'u312996326_sy_adm',
+	'password' => 'SyailendraApp1!',
+	'database' => 'u312996326_syailendra_app',
+	// 'username' => 'root',
+	// 'password' => '',
+	// 'database' => 'sy_app',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

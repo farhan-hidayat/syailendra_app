@@ -242,7 +242,7 @@ class Dashboard extends CI_Controller
 		$data = array(
 			'title' => "Data Karyawan",
 			'lokasi' => $this->m_data->get_data('lokasi')->result(),
-			'karyawan' => $this->m_data->get_data('karyawan')->result()
+			'karyawan' => $this->db->query("SELECT * FROM karyawan,lokasi,divisi WHERE lokasi_karyawan=id_lokasi AND divisi_karyawan=id_divisi order by id_karyawan desc")->result()
 		);
 		$this->load->view('admin/karyawan/v_karyawan', $data);
 	}
@@ -255,6 +255,74 @@ class Dashboard extends CI_Controller
 			'divisi' => $this->m_data->get_data('divisi')->result()
 		);
 		$this->load->view('admin/karyawan/v_karyawan_tambah', $data);
+	}
+	public function tambah_karyawan_aksi()
+	{
+		$this->form_validation->set_rules('hp', 'No Hp', 'required|is_unique[karyawan.hp_karyawan]');
+
+		if ($this->form_validation->run() != false) {
+
+			$hp = $this->input->post('hp');
+			$nama = $this->input->post('nama');
+			$lokasi = $this->input->post('lokasi');
+			$divisi = $this->input->post('divisi');
+			$jK = $this->input->post('jK');
+			$tgl_lahir = $this->input->post('tgl_lahir');
+			$tgl_gabung = $this->input->post('tgl_gabung');
+			$gajii = $this->input->post('gaji');
+			$gaji = str_replace(',', '', $gajii);
+			$toko = $this->db->query("SELECT * FROM lokasi WHERE id_lokasi=$lokasi")->row()->kode_lokasi;
+			$this->db->order_by('id_karyawan', 'DESC');
+			$sql 		= $this->db->get('karyawan');
+			if ($sql->num_rows() == 0) {
+				$kode   = $toko . "001";
+			} else {
+				$noUrut 	 	= substr($sql->row()->kode_karyawan, 4, 3);
+				$noUrut++;
+				$kode	  = $toko . sprintf("%03s", $noUrut);
+			}
+
+			$data = array(
+				'kode_karyawan' => $kode,
+				'nama_karyawan' => $nama,
+				'hp_karyawan' => "62" . $hp,
+				'lokasi_karyawan' => $lokasi,
+				'divisi_karyawan' => $divisi,
+				'jK_karyawan' => $jK,
+				'tgllahir_karyawan' => $tgl_lahir,
+				'tglmsuk_karyawan' => $tgl_gabung,
+				'gaji_karyawan' => $gaji,
+			);
+
+			$this->m_data->insert_data($data, 'karyawan');
+
+			$this->session->set_flashdata('msg', 'Ditambah');
+
+			redirect(base_url() . 'dashboard/karyawan');
+		} else {
+			$msg = '<div class="alert alert-danger alert-dismissible" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;&nbsp; &nbsp;</span>
+							</button>
+							<strong> ' . form_error('hp') . '</strong>
+					</div>';
+
+			$this->session->set_flashdata('err', $msg);
+			redirect(base_url() . 'dashboard/tambah_karyawan');
+		}
+	}
+
+	public function hapus_karyawan($id)
+	{
+		$where = array(
+			'id_karyawan' => $id
+		);
+
+		$this->m_data->delete_data($where, 'karyawan');
+
+		$this->session->set_flashdata('msg', 'Dihapus');
+
+		redirect(base_url() . 'dashboard/karyawan/v_karyawan');
 	}
 
 	public function histori()
@@ -286,7 +354,15 @@ class Dashboard extends CI_Controller
 		$data = array(
 			'title' => "Gaji"
 		);
-		$this->load->view('admin/tabel', $data);
+		$this->load->view('admin/gaji/v_gaji', $data);
+	}
+
+	public function tambah_gaji()
+	{
+		$data = array(
+			'title' => "Gaji"
+		);
+		$this->load->view('admin/gaji/v_gaji_tambah', $data);
 	}
 
 	public function pengguna()

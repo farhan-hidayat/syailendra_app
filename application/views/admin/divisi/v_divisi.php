@@ -116,7 +116,7 @@ $this->load->view('admin/template/sidebar');
                                         <i class="fas fa-store"></i>
                                     </div>
                                 </div>
-                                <input type="text" class="form-control <?= form_error('nama') ? 'is-invalid' : null ?>" placeholder="Nama Toko" name="nama" id="nama" required>
+                                <input type="text" class="form-control <?= form_error('nama') ? 'is-invalid' : null ?>" placeholder="Nama Divisi" name="nama" id="nama" required>
                                 <div class="invalid-feedback">
                                     <?= form_error('nama'); ?>
                                 </div>
