@@ -31,15 +31,27 @@ $this->load->view('admin/template/sidebar');
                                     <table class="table table-striped" id="table-4">
                                         <thead>
                                             <tr>
-                                                <th class="text-center" width="1%">
+                                                <th class="text-center" width="1%" rowspan="2">
                                                     No.
                                                 </th>
-                                                <th>Kode</th>
-                                                <th>Nama</th>
-                                                <th>Divisi</th>
-                                                <th>Kode</th>
-                                                <th class="text-center">Aksi</th>
+                                                <th rowspan="2">Kode</th>
+                                                <th rowspan="2">Nama</th>
+                                                <th rowspan="2">Divisi</th>
+                                                <th rowspan="2">Kode</th>
+                                                <th colspan="5" class="text-center">TTerima</th>
+                                                <th colspan="5" class="text-center">KKeluar</th>
+                                                <th class="text-center" rowspan="2">Aksi</th>
                                             </tr>
+                                            <th>Terima</th>
+                                            <th>Terima</th>
+                                            <th>Terima</th>
+                                            <th>Terima</th>
+                                            <th>Terima</th>
+                                            <th>Keluar</th>
+                                            <th>Keluar</th>
+                                            <th>Keluar</th>
+                                            <th>Keluar</th>
+                                            <th>Keluar</th>
                                         </thead>
                                         <tbody>
                                             <!-- <?php
