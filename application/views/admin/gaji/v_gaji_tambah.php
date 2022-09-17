@@ -34,24 +34,23 @@ $this->load->view('admin/template/sidebar');
                                                 <th class="text-center" width="1%" rowspan="2">
                                                     No.
                                                 </th>
-                                                <th rowspan="2">Kode</th>
-                                                <th rowspan="2">Nama</th>
-                                                <th rowspan="2">Divisi</th>
-                                                <th rowspan="2">Kode</th>
-                                                <th colspan="5" class="text-center">TTerima</th>
-                                                <th colspan="5" class="text-center">KKeluar</th>
-                                                <th class="text-center" rowspan="2">Aksi</th>
+                                                <th rowspan="2" style='text-align:center;'>Kode</th>
+                                                <th rowspan="2" style='text-align:center;'>Nama</th>
+                                                <th rowspan="2" style='text-align:center;'>Divisi</th>
+                                                <th colspan="5" class="text-center">Pemasukan</th>
+                                                <th rowspan="2" style='background-color:#42f445 !important'>Bersih</th>
+                                                <th colspan="4" class="text-center">Pengeluaran</th>
+                                                <th rowspan="2" style='text-align:center;'>Terima</th>
                                             </tr>
-                                            <th>Terima</th>
-                                            <th>Terima</th>
-                                            <th>Terima</th>
-                                            <th>Terima</th>
-                                            <th>Terima</th>
-                                            <th>Keluar</th>
-                                            <th>Keluar</th>
-                                            <th>Keluar</th>
-                                            <th>Keluar</th>
-                                            <th>Keluar</th>
+                                            <th>Gaji Pokok</th>
+                                            <th>Tunjangan</th>
+                                            <th>Lembur</th>
+                                            <th>Bonus</th>
+                                            <th>Kedisiplinan</th>
+                                            <th>Tidak Masuk</th>
+                                            <th>Terlambat</th>
+                                            <th>Kasbon</th>
+                                            <th>Sisa Kasbon</th>
                                         </thead>
                                         <tbody>
                                             <!-- <?php
@@ -66,6 +65,40 @@ $this->load->view('admin/template/sidebar');
                                                 </td>
                                             </tr>
                                             <!-- <?php } ?> -->
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>A</td>
+                                            <td>
+                                                <input type="text" name="gaji" value="1000000" class="form-control currency" disabled>
+                                            </td>
+                                        </tbody>
+                                        <tbody>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
+                                            <td>b</td>
                                         </tbody>
                                     </table>
                                 </div>

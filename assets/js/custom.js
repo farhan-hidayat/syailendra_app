@@ -54,11 +54,6 @@ function checkTime(i) {
 }
 startTime();
 
-var cleaveC = new Cleave(".currency", {
-	numeral: true,
-	numeralThousandsGroupStyle: "thousand",
-});
-
 // const flashData = $(".flash-data").data("flashdata");
 // if (flashData) {
 // 	iziToast.success({

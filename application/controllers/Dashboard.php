@@ -258,7 +258,7 @@ class Dashboard extends CI_Controller
 	}
 	public function tambah_karyawan_aksi()
 	{
-		$this->form_validation->set_rules('hp', 'No Hp', 'required|is_unique[karyawan.hp_karyawan]');
+		$this->form_validation->set_rules('hp', 'No.HP', 'required|is_unique[karyawan.hp_karyawan]');
 
 		if ($this->form_validation->run() != false) {
 
@@ -271,27 +271,30 @@ class Dashboard extends CI_Controller
 			$tgl_gabung = $this->input->post('tgl_gabung');
 			$gajii = $this->input->post('gaji');
 			$gaji = str_replace(',', '', $gajii);
+			$tunjang = $this->input->post('tunjangan');
+			$tunjangan = str_replace(',', '', $tunjang);
 			$toko = $this->db->query("SELECT * FROM lokasi WHERE id_lokasi=$lokasi")->row()->kode_lokasi;
-			$this->db->order_by('id_karyawan', 'DESC');
+			$this->db->order_by('kode_karyawan', 'DESC');
 			$sql 		= $this->db->get('karyawan');
 			if ($sql->num_rows() == 0) {
 				$kode   = $toko . "001";
 			} else {
-				$noUrut 	 	= substr($sql->row()->kode_karyawan, 4, 3);
+				$noUrut 	 	= substr($sql->row()->kode_karyawan, 2, 3);
 				$noUrut++;
 				$kode	  = $toko . sprintf("%03s", $noUrut);
 			}
 
 			$data = array(
+				'hp_karyawan' => "62" . $hp,
 				'kode_karyawan' => $kode,
 				'nama_karyawan' => $nama,
-				'hp_karyawan' => "62" . $hp,
 				'lokasi_karyawan' => $lokasi,
 				'divisi_karyawan' => $divisi,
 				'jK_karyawan' => $jK,
 				'tgllahir_karyawan' => $tgl_lahir,
 				'tglmsuk_karyawan' => $tgl_gabung,
 				'gaji_karyawan' => $gaji,
+				'tunjangan_karyawan' => $tunjangan
 			);
 
 			$this->m_data->insert_data($data, 'karyawan');

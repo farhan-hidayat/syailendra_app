@@ -54,6 +54,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <script src="<?php echo base_url(); ?>assets/js/page/modules-toastr.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/page/features-post-create.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/page/modules-ion-icons.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/page/forms-advanced-forms.js"></script>
 
 <!-- Template JS File -->
 <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>

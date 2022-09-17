@@ -147,6 +147,19 @@ $this->load->view('admin/template/sidebar');
                         </div>
                       </div>
                     </div>
+                    <div class="form-group row mb-4">
+                      <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Tunjangan</label>
+                      <div class="col-sm-12 col-md-7">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                              Rp.
+                            </div>
+                          </div>
+                          <input type="text" name="tunjangan" class="form-control currency2">
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
