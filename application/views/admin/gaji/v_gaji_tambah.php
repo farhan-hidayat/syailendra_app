@@ -31,26 +31,24 @@ $this->load->view('admin/template/sidebar');
                                     <table class="table table-striped" id="table-4">
                                         <thead>
                                             <tr>
-                                                <th class="text-center" width="1%" rowspan="2">
-                                                    No.
+                                                <th width="1%">No.</th>
+                                                <th>Kode</th>
+                                                <th>Nama</th>
+                                                <th>Divisi</th>
+                                                <th>Gaji Pokok</th>
+                                                <th>Tunjangan</th>
+                                                <th colspan="2">Lembur</th>
+                                                <th>Bonus</th>
+                                                <th>Kedisiplinan</th>
+                                                <th style="background-color: #42f445 !important">
+                                                    Bersih
                                                 </th>
-                                                <th rowspan="2" style='text-align:center;'>Kode</th>
-                                                <th rowspan="2" style='text-align:center;'>Nama</th>
-                                                <th rowspan="2" style='text-align:center;'>Divisi</th>
-                                                <th colspan="5" class="text-center">Pemasukan</th>
-                                                <th rowspan="2" style='background-color:#42f445 !important'>Bersih</th>
-                                                <th colspan="4" class="text-center">Pengeluaran</th>
-                                                <th rowspan="2" style='text-align:center;'>Terima</th>
+                                                <th colspan="2">Tidak Masuk</th>
+                                                <th colspan="2">Terlambat</th>
+                                                <th>Kasbon</th>
+                                                <th>Sisa Kasbon</th>
+                                                <th>Terima</th>
                                             </tr>
-                                            <th>Gaji Pokok</th>
-                                            <th>Tunjangan</th>
-                                            <th>Lembur</th>
-                                            <th>Bonus</th>
-                                            <th>Kedisiplinan</th>
-                                            <th>Tidak Masuk</th>
-                                            <th>Terlambat</th>
-                                            <th>Kasbon</th>
-                                            <th>Sisa Kasbon</th>
                                         </thead>
                                         <tbody>
                                             <!-- <?php
@@ -65,40 +63,73 @@ $this->load->view('admin/template/sidebar');
                                                 </td>
                                             </tr>
                                             <!-- <?php } ?> -->
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>A</td>
-                                            <td>
-                                                <input type="text" name="gaji" value="1000000" class="form-control currency" disabled>
-                                            </td>
-                                        </tbody>
-                                        <tbody>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
-                                            <td>b</td>
+                                            <tr>
+                                                <td>
+                                                    No
+                                                </td>
+                                                <td>
+                                                    Kode
+                                                    </br>
+                                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#ModalTambah">
+                                                        <!-- <i class="fas fa-plus"></i>  -->
+                                                        Ubah
+                                                    </button>
+                                                </td>
+                                                <td>Nama</td>
+                                                <td>Divisi</td>
+                                                <td>Gapok</td>
+                                                <td>Tunjangan</td>
+                                                <td>
+                                                    <input type="text" name="gaji" class="form-control" />
+                                                </td>
+                                                <td>Lembur</td>
+                                                <td>
+                                                    <input type="text" name="gaji" class="form-control" />
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="gaji" class="form-control" />
+                                                </td>
+                                                <td style="background-color: #42f445 !important">Bersih</td>
+                                                <td>
+                                                    <input type="text" name="gaji" class="form-control" />
+                                                </td>
+                                                <td>Tdk Masuk</td>
+                                                <td>
+                                                    <input type="text" name="gaji" class="form-control" />
+                                                </td>
+                                                <td>Terlambat</td>
+                                                <td>Kasbon</td>
+                                                <td>Sisa</td>
+                                                <td>
+                                                    <input type="text" name="gaji" value="1000000" class="form-control" disabled />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>b</td>
+                                                <td>b</td>
+                                                <td>b</td>
+                                                <td>b</td>
+                                                <td>b</td>
+                                                <td>b</td>
+                                                <td>
+                                                    <input type="text" name="gaji" class="form-control" />
+                                                </td>
+                                                <td>b</td>
+                                                <td>b</td>
+                                                <td>b</td>
+                                                <td style="background-color: #42f445 !important">b</td>
+                                                <td>
+                                                    <input type="text" name="gaji" class="form-control" />
+                                                </td>
+                                                <td>b</td>
+                                                <td>
+                                                    <input type="text" name="gaji" class="form-control" />
+                                                </td>
+                                                <td>b</td>
+                                                <td>b</td>
+                                                <td>b</td>
+                                                <td>b</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
