@@ -98,7 +98,9 @@ $this->load->view('admin/template/sidebar');
                                                     <input type="text" name="gaji" class="form-control" />
                                                 </td>
                                                 <td>Terlambat</td>
-                                                <td>Kasbon</td>
+                                                <td>
+                                                    <input type="text" name="gaji" class="form-control" />
+                                                </td>
                                                 <td>Sisa</td>
                                                 <td>
                                                     <input type="text" name="gaji" value="1000000" class="form-control" disabled />

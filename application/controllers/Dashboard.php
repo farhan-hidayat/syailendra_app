@@ -260,7 +260,21 @@ class Dashboard extends CI_Controller
 	{
 		$this->form_validation->set_rules('hp', 'No.HP', 'required|is_unique[karyawan.hp_karyawan]');
 
+		if (empty($_FILES['foto']['name'])) {
+			$this->form_validation->set_rules('foto', 'Foto', 'required');
+		}
+
 		if ($this->form_validation->run() != false) {
+
+
+			$nama = $this->input->post('nama');
+			$config['upload_path']   = './files/berkas/';
+			$config['allowed_types'] = 'jpg|png|jpeg';
+			$config['max_size']      = 5120;
+			$config['file_name']     = 'Foto-' . $nama;
+			$config['overwrite']	 = true;
+
+			$this->load->library('upload', $config);
 
 			$hp = $this->input->post('hp');
 			$nama = $this->input->post('nama');
